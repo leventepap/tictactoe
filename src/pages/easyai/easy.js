@@ -9,15 +9,15 @@ import { useNavigate } from "react-router-dom";
 const Easy = () => {
 
     const navigate = useNavigate();
-    const [gameActive, setGameActive] = useState(false);
-    const [freeTiles, setFreeTiles] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]);
-    const [playerTiles, setPlayerTiles] = useState([]);
-    const [aiTiles, setAiTiles] = useState([]);
-    const [wins, setWins] = useState({
+    const [gameActive, setGameActive] = useState(false); //whether game is running or not.
+    const [freeTiles, setFreeTiles] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]); //available tiles.
+    const [playerTiles, setPlayerTiles] = useState([]); //player owned tiles.
+    const [aiTiles, setAiTiles] = useState([]); //ai owned tiles.
+    const [wins, setWins] = useState({ //win states.
         player: false,
         ai: false
     })
-    const winCombos = [
+    const winCombos = [ //win conditions.
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8],
@@ -28,7 +28,7 @@ const Easy = () => {
         [2, 4, 6]
     ]
 
-    const newGame = () => {
+    const newGame = () => { //starts a new game, clears board and tiles, resets wins.
         setGameActive(true);
         setFreeTiles([0, 1, 2, 3, 4, 5, 6, 7, 8]);
         setPlayerTiles([]);
@@ -39,7 +39,7 @@ const Easy = () => {
         });
     }
 
-    const checkWinState = () => {
+    const checkWinState = () => { //checks the tiles of both players against winning the conditions, sets winner.
         winCombos.forEach((element) => {
             if (playerTiles.includes(element[0]) && playerTiles.includes(element[1]) && playerTiles.includes(element[2])) {
                 wins.player = true
@@ -52,8 +52,7 @@ const Easy = () => {
         })
     }
 
-    const playerMove = (tileNr) => {
-
+    const playerMove = (tileNr) => { //checks if player can choose a certain field. removes the field from available tiles and adds it to the player's tiles.
         if (gameActive === true) {
             if (freeTiles.includes(tileNr)) {
                 let index = freeTiles.indexOf(tileNr)
@@ -61,24 +60,20 @@ const Easy = () => {
                 let newPlayerTiles = [...playerTiles]
                 newPlayerTiles.push(tileNr);
                 setPlayerTiles(newPlayerTiles);
-            } else {
-                console.log('Field already taken!')
             }
         }
     }
 
-    useEffect(() => {
+    useEffect(() => { //sets up a new game when the page loads for the first time or when is manually refreshed.
         newGame();
     },[])
 
-    useEffect(() => {
+    useEffect(() => { //checks win conditions for the player. stops game when needed or takes tile for ai move. runs after player takes a tile.
         checkWinState();
         if (wins.player === true) {
             setGameActive(false)
-            console.log('Player won!')
         } else if (wins.player === false && freeTiles.length === 0) {
             setGameActive(false)
-            console.log('Its a tie!')
         } else if (freeTiles.length === 9) {
             console.log('New Game!')
         } else {
@@ -91,23 +86,20 @@ const Easy = () => {
         }
     }, [playerTiles])
 
-    useEffect(() => {
+    useEffect(() => { //checks win conditions for the ai. stops the game when needed. runs after ai takes a tile.
         checkWinState();
         if (wins.ai === true) {
             setGameActive(false)
-            console.log('AI won!')
         } else if (wins.ai === false && freeTiles.length === 0) {
             setGameActive(false)
-            console.log('Its a tie!')
         }
     },[aiTiles]) 
-
 
     return (
         <EasyContainer>
             <main>
                 <h1>Currently playing against easy AI</h1>
-                <Board
+                <Board //board component. inherits the tiles of both players and the ability to take tiles for the player.
                     makeMove={playerMove}
                     playerTiles={playerTiles}
                     aiTiles={aiTiles} />
@@ -120,6 +112,7 @@ const Easy = () => {
                     </div>
                 </div>
                 <div className="result">
+                {/*checks the win states after every move. declares result.*/}
                 {wins.player === true ? <p>Player wins!</p> : <></>}
                 {wins.ai === true ? <p>AI wins!</p> : <></>}
                 {(wins.ai === false && wins.player === false) && freeTiles.length === 0 ? <p>It's a tie!</p> : <></>}
