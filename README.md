@@ -15,5 +15,5 @@ Versus-Modus gegen einen Freund \
 Gegen einfachen Computer \
 Gegen schwierigen Computer 
 
-Beide Computergegner wurden von Grund auf neu geschrieben.
+Beide Computergegner wurden von Grund auf neu geschrieben.\
 Schwieriger Computer ist ohne Minimax-Algorithmus geschrieben.
