@@ -8,12 +8,12 @@ Im Projektverzeichnis können Sie Folgendes ausführen:
 Führt die App im Entwicklungsmodus aus.\
 Öffnen Sie [http://localhost:3000](http://localhost:3000), um es in Ihrem Browser anzuzeigen.
 
-Möglicherweise sehen Sie auch Lint-Fehler in der Konsole.\
+Möglicherweise sehen Sie auch Lint-Fehler in der Konsole.
 
 Verfügt über 3 Modi:\
 Versus-Modus gegen einen Freund \
 Gegen einfachen Computer \
-Gegen schwierigen Computer \
+Gegen schwierigen Computer 
 
 Beide Computergegner wurden von Grund auf neu geschrieben.
 Schwieriger Computer ist ohne Minimax-Algorithmus geschrieben.
