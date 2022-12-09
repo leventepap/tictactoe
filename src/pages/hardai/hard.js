@@ -119,14 +119,15 @@ const Hard = () => {
         const checkDiagonal = (player, all) => { //handles the four straight line cases
             if ((!all.includes(0) && !all.includes(4) && !all.includes(8)) ||
                 (!all.includes(2) && !all.includes(4) && !all.includes(6))) {
-                if(player[0] === 0) {
+                if (player[0] === 0) {
                     return 2
                 } else {
                     return 1
                 }
-            } else if ((!all.includes(1) && !all.includes(4) && !all.includes(7)) ||
-                       (!all.includes(3) && !all.includes(4) && !all.includes(5))) {
-                       return 2
+            } else if (!all.includes(1) && !all.includes(4) && !all.includes(7)) {
+                return 3
+            } else if (!all.includes(3) && !all.includes(4) && !all.includes(5)) {
+                return 2
             }
         }
 
