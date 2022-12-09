@@ -81,4 +81,20 @@ h1 {
     }
 }
 
+.turns {
+    width: 200px;
+    height: 45px;
+    > div > p {
+        margin-block-end: 1px;
+        margin-block-start: 1px;
+    }
+}
+
+.result {
+    font-family: title;
+    font-size: 45px;
+    color: white;
+    height: 45px;
+}
+
 `;

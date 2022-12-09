@@ -81,4 +81,11 @@ h1 {
     }
 }
 
+.result {
+    font-family: title;
+    font-size: 45px;
+    color: white;
+    height: 45px;
+}
+
 `;
