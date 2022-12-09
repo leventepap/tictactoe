@@ -4,10 +4,6 @@ import title from "../../assets/fonts/Chalk-Regular.ttf"
 
 export const HardContainer = styled.div`
 
-/* {
-    border: 1px solid blue;
-}*/
-
 @font-face {
     font-family: 'title';
     src: url(${title});

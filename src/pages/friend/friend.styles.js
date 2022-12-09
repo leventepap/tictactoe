@@ -4,10 +4,6 @@ import title from "../../assets/fonts/Chalk-Regular.ttf"
 
 export const FriendContainer = styled.div`
 
-/* {
-    border: 1px solid blue;
-}*/
-
 @font-face {
     font-family: 'title';
     src: url(${title});
@@ -84,6 +80,10 @@ h1 {
 .turns {
     width: 200px;
     height: 45px;
+    > div {
+        display: flex;
+        justify-content: center;
+    }
     > div > p {
         margin-block-end: 1px;
         margin-block-start: 1px;
